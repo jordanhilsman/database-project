@@ -95,3 +95,7 @@ inner join surgeon
 	on surgeon.SURGEON_ID = SURGERY_EVENT.SURGEON_ID
 inner join STAFF
     on STAFF.EMP_ID = SURGERY_EVENT.STAFF_ID;
+
+SELECT surgery_event.ENCOUNTER_ID, surgery_event.SURGERY_DATE, DLookUp("S_LNAME","surgeon","[SURGEON_ID]=" & [SURGEON_ID]) & ", " & DLookUp("S_FNAME","surgeon","[SURGEON_ID]=" & [SURGEON_ID]) AS SURGEON, surgery_event.OR_SUITE, DLookUp("EMP_LNAME","staff","[EMP_ID]=" & [ANES_ID]) & ", " & DLookUp("EMP_FNAME","staff","[EMP_ID]=" & [ANES_ID]) AS ANES, DLookUp("EMP_LNAME","staff","[EMP_ID]=" & [SCRUB_ID]) & ", " & DLookUp("EMP_FNAME","staff","[EMP_ID]=" & [SCRUB_ID]) AS SCRUB, DLookUp("EMP_LNAME","staff","[EMP_ID]=" & [NURSE_ID]) & ", " & DLookUp("EMP_FNAME","staff","[EMP_ID]=" & [NURSE_ID]) AS NURSE, surgery_event.CPT_CODE, surgery_event.CPT_DESC, surgery_event.BOOKED_TIME, surgery_event.OR_SCHEDULE, surgery_event.WHEELS_IN, surgery_event.START_TIME, surgery_event.END_TIME, surgery_event.WHEELS_OUT
+FROM surgery_event
+WHERE (((surgery_event.SURGEON_ID)=[ENTER: SURGEON_ID]));
